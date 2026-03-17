@@ -19,7 +19,7 @@ const quickActions = [
     key: "new-visit",
     label: "New Visit",
     icon: Stethoscope,
-    bg: "bg-white",
+    bg: "bg-[#E8F5E9]",
     tab: "visit" as TabKey,
   },
   {
@@ -67,7 +67,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
       {/* Main content */}
       <div className="flex-1 px-4 pt-4 pb-4 space-y-4 animate-fade-in">
         {/* Queue card */}
-        <div className="bg-white rounded-2xl shadow-card p-5">
+        <div className="bg-white rounded-2xl shadow-card p-5 border-t-2 border-t-[#1B5E20]">
           <div className="flex items-start justify-between mb-2">
             <div>
               <p className="text-sm text-gray-500 font-medium">
@@ -92,7 +92,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
             type="button"
             data-ocid="home.view_queue.primary_button"
             onClick={() => onNavigate("patients")}
-            className="w-full py-3.5 bg-vospital-primary text-white font-bold rounded-xl text-sm tracking-wide hover:opacity-90 active:scale-[0.98] transition-all"
+            className="w-full min-h-[52px] py-3.5 bg-vospital-primary text-white font-bold rounded-xl text-sm tracking-wide hover:opacity-90 active:scale-[0.98] transition-all"
           >
             View Queue
           </button>

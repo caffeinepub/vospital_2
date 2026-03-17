@@ -38,7 +38,7 @@ export function VisitScreen() {
         <button
           type="button"
           data-ocid="visit.start.primary_button"
-          className="w-full max-w-[320px] py-4 bg-vospital-primary text-white font-bold rounded-xl text-base tracking-wide hover:opacity-90 active:scale-[0.98] transition-all shadow-card"
+          className="w-full max-w-[320px] min-h-[52px] py-4 bg-vospital-primary text-white font-bold rounded-xl text-base tracking-wide hover:opacity-90 active:scale-[0.98] transition-all shadow-card"
         >
           Start Visit
         </button>
@@ -52,7 +52,7 @@ export function VisitScreen() {
                 type="button"
                 key={visit.id}
                 data-ocid={`visit.item.${idx + 1}`}
-                className="w-full bg-white rounded-xl shadow-card p-4 flex items-center justify-between border border-gray-100 active:scale-[0.98] transition-transform"
+                className="w-full bg-white rounded-xl shadow-card p-4 flex items-center justify-between border-t-2 border-t-[#1B5E20] border-x border-b border-gray-100 active:scale-[0.98] transition-transform"
               >
                 <div>
                   <p className="font-bold text-gray-900 text-sm">

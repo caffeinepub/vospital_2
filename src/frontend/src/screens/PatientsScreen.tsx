@@ -98,10 +98,25 @@ const PATIENTS: Patient[] = [
   },
 ];
 
-const STATUS_CONFIG: Record<PatientStatus, { dot: string; label: string }> = {
-  healthy: { dot: "bg-green-500", label: "Healthy" },
-  "follow-up": { dot: "bg-amber-400", label: "Follow-up" },
-  urgent: { dot: "bg-red-500", label: "Urgent" },
+const STATUS_CONFIG: Record<
+  PatientStatus,
+  { dot: string; label: string; leftBorder: string }
+> = {
+  healthy: {
+    dot: "bg-green-500",
+    label: "Healthy",
+    leftBorder: "border-l-green-500",
+  },
+  "follow-up": {
+    dot: "bg-amber-400",
+    label: "Follow-up",
+    leftBorder: "border-l-amber-400",
+  },
+  urgent: {
+    dot: "bg-red-500",
+    label: "Urgent",
+    leftBorder: "border-l-red-500",
+  },
 };
 
 export function PatientsScreen() {
@@ -149,7 +164,7 @@ export function PatientsScreen() {
                 type="button"
                 key={patient.id}
                 data-ocid={`patients.item.${idx + 1}`}
-                className="w-full bg-white rounded-2xl shadow-sm p-4 flex items-center gap-3 text-left active:scale-[0.98] transition-transform border border-gray-100"
+                className={`w-full bg-white rounded-2xl shadow-card p-4 flex items-center gap-3 text-left active:scale-[0.98] transition-transform border-y border-r border-gray-100 border-l-4 ${cfg.leftBorder}`}
               >
                 {/* Avatar */}
                 <div className="w-11 h-11 rounded-full bg-vospital-primary flex items-center justify-center flex-shrink-0 font-bold text-sm text-white">
