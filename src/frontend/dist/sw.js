@@ -1,4 +1,4 @@
-const CACHE_NAME = 'vospital-v1';
+const CACHE_NAME = 'vospital-20260324035313';
 const APP_SHELL = [
   '/',
   '/index.html',

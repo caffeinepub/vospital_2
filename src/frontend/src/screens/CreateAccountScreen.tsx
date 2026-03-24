@@ -31,13 +31,16 @@ export function CreateAccountScreen({ onBack }: CreateAccountScreenProps) {
         <button
           type="button"
           data-ocid="create_account.cancel_button"
-          onClick={onBack}
-          className="flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 text-[#1B5E20] transition-colors"
+          onClick={(e) => {
+            e.preventDefault();
+            onBack();
+          }}
+          className="flex items-center justify-center w-11 h-11 rounded-full hover:bg-gray-100 text-[#1B5E20] transition-colors"
           aria-label="Go back"
         >
           <ArrowLeft size={22} />
         </button>
-        <h1 className="flex-1 text-center text-lg font-bold text-gray-800 -ml-9">
+        <h1 className="flex-1 text-center text-lg font-bold text-gray-800 -ml-11">
           Create Account
         </h1>
       </div>

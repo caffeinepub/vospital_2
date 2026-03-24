@@ -109,6 +109,13 @@ function App() {
         <ProfileBottomSheet
           open={profileOpen}
           onClose={() => setProfileOpen(false)}
+          onLogout={() => {
+            setProfileOpen(false);
+            // Clear session but keep consent flag
+            localStorage.removeItem("vospital_session");
+            setAppScreen("login");
+            setActiveTab("home");
+          }}
         />
       </div>
       <Toaster position="top-center" />

@@ -55,7 +55,7 @@ export function HomeScreen({ onNavigate, onOpenProfile }: HomeScreenProps) {
       <StatusBar />
 
       {/* App bar */}
-      <div className="flex items-center justify-between px-4 py-3 bg-white shadow-xs">
+      <div className="flex items-center justify-between px-4 py-2 bg-white shadow-xs">
         <div>
           <p className="text-xs text-gray-500 font-medium">Good morning,</p>
           <p className="text-base font-bold text-gray-900">CHW Amara</p>
@@ -79,24 +79,24 @@ export function HomeScreen({ onNavigate, onOpenProfile }: HomeScreenProps) {
       </div>
 
       {/* Main content */}
-      <div className="flex-1 px-4 pt-4 pb-4 space-y-4 animate-fade-in">
+      <div className="flex-1 px-4 pt-2 pb-2 space-y-2 animate-fade-in">
         {/* Queue card */}
-        <div className="bg-white rounded-2xl shadow-card p-5 border-t-2 border-t-[#1B5E20]">
-          <div className="flex items-start justify-between mb-2">
+        <div className="bg-white rounded-2xl shadow-card p-3 border-t-2 border-t-[#1B5E20]">
+          <div className="flex items-start justify-between mb-1">
             <div>
               <p className="text-sm text-gray-500 font-medium">
                 Today&apos;s Patient Queue
               </p>
-              <p className="text-5xl font-extrabold text-vospital-primary leading-none mt-1">
+              <p className="text-3xl font-extrabold text-vospital-primary leading-none mt-1">
                 12
               </p>
-              <p className="text-sm text-gray-500 mt-1">Patients waiting</p>
+              <p className="text-sm text-gray-500">Patients waiting</p>
             </div>
             <div className="w-12 h-12 bg-vospital-pale rounded-xl flex items-center justify-center">
               <Users className="w-6 h-6 text-vospital-primary" />
             </div>
           </div>
-          <div className="flex items-center gap-1.5 mb-4">
+          <div className="flex items-center gap-1.5 mb-2">
             <span className="w-2 h-2 rounded-full bg-vospital-urgent" />
             <span className="text-sm font-semibold text-vospital-urgent">
               3 Urgent Cases
@@ -106,7 +106,7 @@ export function HomeScreen({ onNavigate, onOpenProfile }: HomeScreenProps) {
             type="button"
             data-ocid="home.view_queue.primary_button"
             onClick={() => onNavigate("patients")}
-            className="w-full min-h-[52px] py-3.5 bg-vospital-primary text-white font-bold rounded-xl text-sm tracking-wide hover:opacity-90 active:scale-[0.98] transition-all"
+            className="w-full min-h-[52px] py-2.5 bg-vospital-primary text-white font-bold rounded-xl text-sm tracking-wide hover:opacity-90 active:scale-[0.98] transition-all"
           >
             View Queue
           </button>
@@ -114,8 +114,10 @@ export function HomeScreen({ onNavigate, onOpenProfile }: HomeScreenProps) {
 
         {/* Quick actions */}
         <div>
-          <p className="text-sm font-bold text-gray-700 mb-3">Quick Actions</p>
-          <div className="grid grid-cols-2 gap-3">
+          <p className="text-sm font-bold text-gray-700 mb-1.5">
+            Quick Actions
+          </p>
+          <div className="grid grid-cols-2 gap-2">
             {quickActions.map((action) => {
               const Icon = action.icon;
               return (
@@ -124,20 +126,20 @@ export function HomeScreen({ onNavigate, onOpenProfile }: HomeScreenProps) {
                   key={action.key}
                   data-ocid={`home.${action.key}.button`}
                   onClick={() => onNavigate(action.tab)}
-                  className={`${action.bg} rounded-2xl shadow-card p-4 flex flex-col items-center justify-center gap-2.5 min-h-[130px] relative active:scale-[0.97] transition-transform border border-gray-100`}
+                  className={`${action.bg} rounded-2xl shadow-card p-2.5 flex flex-col items-center justify-center gap-1.5 min-h-[90px] relative active:scale-[0.97] transition-transform border border-gray-100`}
                 >
                   {action.badge && (
                     <span className="absolute top-3 right-3 bg-vospital-urgent text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center">
                       {action.badge}
                     </span>
                   )}
-                  <div className="w-12 h-12 rounded-xl bg-vospital-pale flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-vospital-pale flex items-center justify-center">
                     <Icon
-                      className="w-6 h-6 text-vospital-primary"
+                      className="w-5 h-5 text-vospital-primary"
                       strokeWidth={2}
                     />
                   </div>
-                  <span className="text-sm font-bold text-gray-800 text-center">
+                  <span className="text-xs font-bold text-gray-800 text-center">
                     {action.label}
                   </span>
                 </button>

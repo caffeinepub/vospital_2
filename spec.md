@@ -1,25 +1,20 @@
 # Vospital
 
 ## Current State
-PatientsScreen exists with search bar, 6 mock patients, and a FAB. Status is binary (urgent/not), no colored status dot, no toast on FAB tap.
+Service worker uses a static cache name `vospital-v1` with cache-first strategy. `skipWaiting()` and `clients.claim()` are already present, so the SW activates immediately. However, since the cache name never changes between deploys, stale assets are served from cache indefinitely -- users don't get updates until they manually clear cache or hard-refresh.
 
 ## Requested Changes (Diff)
 
 ### Add
-- Three-value `status` field on each patient: "healthy" | "follow-up" | "urgent"
-- Colored status dot on each card: green = healthy, amber = follow-up, red = urgent
-- Toast/placeholder when "+" FAB is tapped
+- Build timestamp baked into the cache name so each deploy creates a new cache version.
 
 ### Modify
-- Update mock data to distribute all three statuses
-- Card layout: replace avatar background color urgency indicator with explicit status dot
-- Remove old "URGENT" badge in favor of the dot
+- Cache name changed from static `vospital-v1` to `vospital-20260324035313` (timestamp-based), ensuring old caches are purged on every new deploy and users automatically receive the latest version on next page load.
 
 ### Remove
-- Binary `urgent` boolean field
+- Nothing removed.
 
 ## Implementation Plan
-1. Update PATIENTS mock data with `status` field
-2. Add StatusDot component (colored circle) inside each card
-3. Wire FAB to show a toast ("New patient form coming soon")
-4. Keep search bar, FAB position, and all other screens untouched
+1. Update `sw.js`: change `CACHE_NAME` to `vospital-20260324035313`.
+2. `skipWaiting()` and `clients.claim()` are already in place -- no changes needed there.
+3. On next deploy, the new cache name triggers old cache deletion and forces all clients to load fresh assets.
