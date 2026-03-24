@@ -6,7 +6,9 @@ import {
   Stethoscope,
   Users,
 } from "lucide-react";
+import { useState } from "react";
 import type { TabKey } from "../components/BottomNav";
+import { ProfileBottomSheet } from "../components/ProfileBottomSheet";
 import { StatusBar } from "../components/StatusBar";
 import { useInstallPrompt } from "../hooks/useInstallPrompt";
 
@@ -48,6 +50,7 @@ const quickActions = [
 
 export function HomeScreen({ onNavigate }: HomeScreenProps) {
   const { canInstall, installApp } = useInstallPrompt();
+  const [profileOpen, setProfileOpen] = useState(false);
 
   return (
     <div className="flex flex-col min-h-full">
@@ -57,11 +60,24 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
       <div className="flex items-center justify-between px-4 py-3 bg-white shadow-xs">
         <div>
           <p className="text-xs text-gray-500 font-medium">Good morning,</p>
-          <p className="text-base font-bold text-gray-900">CHW Sarah</p>
+          <p className="text-base font-bold text-gray-900">CHW Amara</p>
         </div>
-        <div className="w-10 h-10 rounded-full bg-vospital-primary flex items-center justify-center">
-          <span className="text-white font-bold text-sm">SM</span>
-        </div>
+
+        {/* Avatar with role badge */}
+        <button
+          type="button"
+          data-ocid="home.avatar.button"
+          onClick={() => setProfileOpen(true)}
+          className="flex flex-col items-center gap-1 active:opacity-80 transition-opacity"
+          aria-label="Open profile menu"
+        >
+          <div className="w-10 h-10 rounded-full bg-vospital-primary flex items-center justify-center">
+            <span className="text-white font-bold text-sm">AM</span>
+          </div>
+          <span className="px-2 py-0.5 rounded-full bg-[#1B5E20] text-white text-[9px] font-bold tracking-wide leading-tight">
+            CHW
+          </span>
+        </button>
       </div>
 
       {/* Main content */}
@@ -152,6 +168,11 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
           </div>
         )}
       </div>
+
+      <ProfileBottomSheet
+        open={profileOpen}
+        onClose={() => setProfileOpen(false)}
+      />
     </div>
   );
 }
