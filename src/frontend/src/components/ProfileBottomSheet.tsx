@@ -12,26 +12,26 @@ export function ProfileBottomSheet({ open, onClose }: ProfileBottomSheetProps) {
     <AnimatePresence>
       {open && (
         <>
-          {/* Backdrop */}
+          {/* Backdrop — covers only the area above the bottom nav */}
           <motion.div
             key="backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-black/50"
+            className="absolute inset-0 bottom-16 z-40 bg-black/50"
             onClick={onClose}
             data-ocid="profile.backdrop"
           />
 
-          {/* Sheet — sits above bottom nav (h-16 = 64px), capped at 60vh, matches app width */}
+          {/* Sheet — anchored above bottom nav, full app width */}
           <motion.div
             key="sheet"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed bottom-16 left-1/2 -translate-x-1/2 w-full max-w-[480px] max-h-[60vh] z-50 bg-white rounded-t-3xl shadow-2xl flex flex-col overflow-hidden"
+            className="absolute bottom-16 left-0 right-0 max-h-[60vh] z-50 bg-white rounded-t-3xl shadow-2xl flex flex-col overflow-hidden"
             data-ocid="profile.sheet"
           >
             {/* Drag handle + close button */}

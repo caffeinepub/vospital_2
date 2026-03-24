@@ -6,14 +6,13 @@ import {
   Stethoscope,
   Users,
 } from "lucide-react";
-import { useState } from "react";
 import type { TabKey } from "../components/BottomNav";
-import { ProfileBottomSheet } from "../components/ProfileBottomSheet";
 import { StatusBar } from "../components/StatusBar";
 import { useInstallPrompt } from "../hooks/useInstallPrompt";
 
 interface HomeScreenProps {
   onNavigate: (tab: TabKey) => void;
+  onOpenProfile: () => void;
 }
 
 const quickActions = [
@@ -48,9 +47,8 @@ const quickActions = [
   },
 ];
 
-export function HomeScreen({ onNavigate }: HomeScreenProps) {
+export function HomeScreen({ onNavigate, onOpenProfile }: HomeScreenProps) {
   const { canInstall, installApp } = useInstallPrompt();
-  const [profileOpen, setProfileOpen] = useState(false);
 
   return (
     <div className="flex flex-col min-h-full">
@@ -67,7 +65,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
         <button
           type="button"
           data-ocid="home.avatar.button"
-          onClick={() => setProfileOpen(true)}
+          onClick={onOpenProfile}
           className="flex flex-col items-center gap-1 active:opacity-80 transition-opacity"
           aria-label="Open profile menu"
         >
@@ -168,11 +166,6 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
           </div>
         )}
       </div>
-
-      <ProfileBottomSheet
-        open={profileOpen}
-        onClose={() => setProfileOpen(false)}
-      />
     </div>
   );
 }
